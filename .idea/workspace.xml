@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9bf3e414-da83-41a9-af7b-6cb251f0a4ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/Lemonade.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/Lemonade.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pageObject/CarInsurancePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pageObject/CarInsurancePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utility/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utility/BaseClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
     "JUnit.RunnerClass.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/sabri/IdeaProjects/Automation_Lemonade/src/main/java/org/example/Main.java"
   }

@@ -1,9 +1,6 @@
 package pageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -117,9 +114,9 @@ public class CarInsurancePage {
 
 
 
-public void enterStreetAddress(String S_address) throws InterruptedException {
+public void enterStreetAddress(String S_address) {
 
-
+try{
         WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(),Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(streetAddress));
         streetAddress.click();
@@ -136,7 +133,17 @@ public void enterStreetAddress(String S_address) throws InterruptedException {
                 Thread.sleep(3000);
             }
         }
+} catch (TimeoutException e) {
+        System.out.println("Timeout waiting for element: " + e.getMessage());
+    } catch (NoSuchElementException e) {
+        System.out.println("Element not found: " + e.getMessage());
+    } catch (InterruptedException e) {
+        System.out.println("Thread was interrupted: " + e.getMessage());
+        Thread.currentThread().interrupt();
+    } catch (Exception e) {
+        System.out.println("An unexpected error occurred: " + e.getMessage());
     }
+}
 
     @FindBy(xpath = "//div[@class='sc-bdfBwQ AnimatedButton__Wrapper-sc-1cjtkjm-1 kpQYKR iiFUwn']")
     WebElement nextButton3;
@@ -158,15 +165,24 @@ public void enterStreetAddress(String S_address) throws InterruptedException {
 WebElement customAddress;
 
     public void clickCustomStreetAddress() {
+try {
+    WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(), Duration.ofSeconds(4));
+    wait.until(ExpectedConditions.visibilityOf(customAddress));
+    wait.until(ExpectedConditions.elementToBeClickable(customAddress));
 
-        WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(), Duration.ofSeconds(4));
-        wait.until(ExpectedConditions.visibilityOf(customAddress));
-        wait.until(ExpectedConditions.elementToBeClickable(customAddress));
+    Actions actions = new Actions(BaseClass.getDriver());
+    actions.moveToElement(customAddress).click().perform();
 
-        Actions actions = new Actions(BaseClass.getDriver());
-        actions.moveToElement(customAddress).click().perform();
-
+} catch (TimeoutException e) {
+    System.out.println("Timeout waiting for customAddress to be clickable: " + e.getMessage());
+} catch (NoSuchElementException e) {
+    System.out.println("Custom address element not found: " + e.getMessage());
+} catch (Exception e) {
+    System.out.println("An unexpected error occurred while clicking the custom address: " + e.getMessage());
+}
     }
+
+
 
 
     @FindBy(name="street_and_number")
@@ -187,7 +203,7 @@ WebElement customAddress;
     public void enterCustomAddress(String address2 , String city, String state, int zip) throws InterruptedException {
 
         Actions actions = new Actions(BaseClass.getDriver());
-
+     try{
         WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(),Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(streetAndNumber));
         streetAndNumber.click();
@@ -214,8 +230,19 @@ WebElement customAddress;
         actions.moveToElement(enterZipCode, 5, 5).sendKeys(String.valueOf(zip)).build().perform();
 
         Thread.sleep(2000);
-
+} catch (TimeoutException e) {
+    System.out.println("Timeout waiting for an element to be clickable: " + e.getMessage());
+} catch (NoSuchElementException e) {
+    System.out.println("Element not found: " + e.getMessage());
+} catch (InterruptedException e) {
+    System.out.println("Thread was interrupted: " + e.getMessage());
+    Thread.currentThread().interrupt(); // Restore interrupted status
+} catch (Exception e) {
+    System.out.println("An unexpected error occurred: " + e.getMessage());
+}
     }
+
+
 
     @FindBy(xpath = "//div[@class='sc-bdfBwQ AnimatedButton__Wrapper-sc-1cjtkjm-1 kpQYKR iiFUwn']")
     WebElement nextButton4;

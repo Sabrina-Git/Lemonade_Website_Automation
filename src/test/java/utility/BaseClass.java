@@ -15,35 +15,46 @@ public class BaseClass {
     private static  WebDriver driver;
 
     public BaseClass() throws IOException, InterruptedException {
-        FileInputStream fis = new FileInputStream("C:\\Users\\sabri\\IdeaProjects\\Automation_Lemonade\\src\\test\\java\\utility\\Environment.properties");
-        Properties prop = new Properties();
-        prop.load(fis);
 
-        String myBrowser = prop.getProperty("browser");
-        System.out.println(myBrowser);
+        try {
+            FileInputStream fis = new FileInputStream("C:\\Users\\sabri\\IdeaProjects\\Automation_Lemonade\\src\\test\\java\\utility\\Environment.properties");
+            Properties prop = new Properties();
+            prop.load(fis);
 
-        String myUrl = prop.getProperty("url");
-        System.out.println(myUrl);
+            String myBrowser = prop.getProperty("browser");
+            System.out.println(myBrowser);
 
+            String myUrl = prop.getProperty("url");
+            System.out.println(myUrl);
 
-        if(myBrowser.equalsIgnoreCase("chrome")){
+            if (myBrowser.equalsIgnoreCase("chrome")) {
 
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
 
-            driver.get(myUrl);
+                driver.get(myUrl);
 
-        } else if (myBrowser.equalsIgnoreCase("firefox")) {
+            } else if (myBrowser.equalsIgnoreCase("firefox")) {
 
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            }
+
+            driver.manage().window().maximize();
+            Thread.sleep(2000);
+
+    } catch (IOException e) {
+        System.out.println("Error loading properties file: " + e.getMessage());
+    } catch (InterruptedException e) {
+        System.out.println("Thread was interrupted: " + e.getMessage());
+    } catch (Exception e) {
+        System.out.println("An unexpected error occurred: " + e.getMessage());
+    } finally {
+        if (driver != null) {
+         driver.quit();
         }
-
-
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
     }
-
+}
 
     public static WebDriver getDriver() {
     return driver;

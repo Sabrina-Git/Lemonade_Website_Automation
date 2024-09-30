@@ -1,7 +1,7 @@
 Feature: Verifying the Car Web Page
 
   #positive test case
-#Case1
+  #Case1
   Scenario: Entering valid data in all fields throughout multiple pages
     Given User navigate to the Lemonade homepage
     And   User click on the Check Our Prices button
@@ -19,7 +19,7 @@ Feature: Verifying the Car Web Page
     Then user clicks on Back Home button
 
     #Negative test case
-#Case2
+    #Case2
   Scenario: Entering invalid data in all fields throughout multiple pages
     Given User navigate to the Lemonade homepage
     And   User click on the Check Our Prices button
@@ -55,7 +55,7 @@ Feature: Verifying the Car Web Page
     Then user clicks on Back Home button
 
     #positive test case
-#case4
+    #case4
   Scenario: Entering valid data in all fields and custom data in Address field throughout multiple pages
     Given User navigate to the Lemonade homepage
     And   User click on the Check Our Prices button
